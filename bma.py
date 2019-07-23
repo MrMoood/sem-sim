@@ -32,10 +32,14 @@ def BMA(patient,dis):
 
 
 #loading the pre-computed scores of the phenotypes. (float128 to make it more precise )
-res_sim = np.loadtxt('simscores.txt', dtype = 'float128')
+res_sim = np.loadtxt('simscores.txt', dtype = 'float64')
+myfile = open("npArray2.txt", "wb")
+np.save(myfile,res_sim)
+myfile.close() 
 
 
-phenotypes = np.genfromtxt('phenotypes.txt', dtype = 'str')
+
+phenotypes = np.genfromtxt('HPandMP.txt', dtype = 'str')
 sim_mat = res_sim.reshape(len(phenotypes),len(phenotypes))
 
 
@@ -54,7 +58,13 @@ for line in lines:
 
 
 patient = ["HP_0002086","HP_0031504","HP_0000969"]
+patientInDict=[]#to get only the phenotypes that we have in our dictionary 
 
+for ph in patient:
+	if(ph in order_dict):
+		patientInDict.append(ph)
+
+			
 
 simScores=[]
 for dis in diseases:
@@ -67,9 +77,13 @@ print(bestMatchDisName)
 with open('dis-patho.txt') as f:
     lines = f.readlines()
 
+pathos=[]
 for line in lines: 
 	dis = line.split('\t')[0]
-	if(dis==disName):
-		print(line)
+	if(dis==bestMatchDisName):
+		pathos=line.split('\t')
+
+print(pathos)
+
 
 
