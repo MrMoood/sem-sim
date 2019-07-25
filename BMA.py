@@ -35,7 +35,7 @@ def BMA(patient,diseasesPhenos):
 
 
 #loading the pre-computed scores of the phenotypes.
-#resnik_similarity = np.loadtxt('simscores.txt', dtype = 'float64') #use this to load scores frpm .txt file
+resnik_similarity = np.loadtxt('simscores.txt', dtype = 'float64') #use this to load scores frpm .txt file
 
 #the following is to store the numpy array in a .npy file to use it instead of "simscores.txt"
 #myfile = open("npArray.npy", "wb")
@@ -43,7 +43,7 @@ def BMA(patient,diseasesPhenos):
 #myfile.close()
 
 # if you have the numpy array stored in .npy file
-resnik_similarity= np.load("nparray.npy")
+#resnik_similarity= np.load("nparray.npy")
 
 
 # 'HPandMP.txt' contains Phenotypes IDs
