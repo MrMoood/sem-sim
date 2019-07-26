@@ -76,15 +76,16 @@ for pheno in patient:
 	if(pheno in order_dict):
 		patientInDict.append(pheno)
 
+
 diseasesPhenosInDict=[]
 simScores=[]
-for dis in diseasesPhenos:
-    for pheno in dis:
+for dis in diseasesPhenos: # dis is a list that has dis id with its corresponding phenotypes
+    for pheno in dis: #now we loop throu the phenotypes of the dis to get only the phenotypes that we pre-computed the pair wise similarity of
         if(pheno in order_dict):
                 diseasesPhenosInDict.append(pheno)
     if(len(diseasesPhenosInDict)>1):
         simScores.append(BMA(patientInDict,diseasesPhenosInDict))
-    else:
+    else: #for some of the diseases there are no phenotypes that we pre-computed their pair wise similarity so the score is 0
         simScores.append(0)
     diseasesPhenosInDict=[]
 
