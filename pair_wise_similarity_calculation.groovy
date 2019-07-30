@@ -59,9 +59,8 @@ def getPhentyoeOntolgy = {
   URI virtualRoot = factory.getURI("http://purl.obolibrary.org/obo/virtualRoot")
   graph.addV(virtualRoot)
   new File("HPOnly.txt").splitEachLine('\t') { items ->
- if (items[0].startsWith("#")) return;
-    String pathId = items[0];//.split("__")[0];
-    URI idURI = factory.getURI("http://purl.obolibrary.org/obo/" + pathId);
+    String phenoId = items[0];
+    URI idURI = factory.getURI("http://purl.obolibrary.org/obo/" + phenoId);
     for (int i = 0; i < items.size(); i++) {
     String pheno = items[i].replaceAll(":", "_");
       URI phenoURI = factory.getURI("http://purl.obolibrary.org/obo/" + pheno);
