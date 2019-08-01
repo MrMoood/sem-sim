@@ -94,7 +94,7 @@ sort_similarity_arg = np.argsort(simScores)[::-1]#this contains the indexes of t
 bestMatchDisId=diseasesPhenos[sort_similarity_arg[0]][0]
 print(bestMatchDisId)
 
-#pathoandpheno is a file that contains disases with their phenotypes tab seperated.
+#pathoandpheno is a file that contains disases with their pathogenes tab seperated.
 # DOID_1 \t NCBITaxon_1 NCBITaxon_2 ... NCBITaxon_N
 with open('dis-patho.txt') as f:
     lines = f.readlines()
